@@ -1,0 +1,66 @@
+/*La zona oscura tiene un ancho fijo de 270px. El tamaño horizontal máximo debe ser de 1000px. 
+Si la pantalla es más grande que eso van a centrarlo. 
+El tamaño vertical debe ser siempre de 750px (bonus: mirar si se puede adaptar al alto de la pantalla).
+*/
+
+body{
+    font-family: 'lato','sans';
+    font-size: 16px;
+    padding: none;
+    border: none;
+    margin: none;
+    box-sizing: border-box;
+    list-style:none;
+}
+.container{
+    display: flex;
+    box-sizing: border-box;
+    padding: none;
+    border: none;
+    margin: none; 
+    max-width: 1000px;
+     height: 750px;
+     border: 1px solid red;
+     background-color: red;
+     margin: 0 auto;
+    
+}
+.users-wrapper{
+    width: 270px;
+    height: 750px;
+    background-color: #343a40;
+    color: gray;
+    box-sizing: border-box;
+    
+}
+
+.main{
+    background-color: #fff;
+    width: 730px;
+    height: 750px;
+    margin-left: 10px;
+}
+.chat-header{
+    display: flex;
+    flex-direction:  row-reverse;
+    background-color: #aaa;
+    height: 5%;
+}
+.messages{
+    height: 90%;
+}
+.input-messages{
+    background-color: green;
+    width: 100%;
+    height: 5%;
+}
+
+.user{
+    padding: 5px 2px;
+    color: #fff;
+    cursor:pointer;
+}
+
+.user:hover{
+    background-color: #007bff;
+}
