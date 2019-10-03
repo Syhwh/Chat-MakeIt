@@ -1,10 +1,11 @@
-
-    <ul  class="user-list" ></ul>
-    {{#each data}}
-    <li id="{{name}}" class="user">{{name}}</li>
-    {{/each}}
-    </ul>
-
-
-
-                    
+<ul class="user-list"></ul>
+{{#each data}}
+<li id="{{name}}" class="user connected-{{connected}}">
+    <i class="fa fa-user-o user-icon" aria-hidden="true"></i>
+    {{name}}
+    <span>
+        <i class="fa fa-ellipsis-v dots-icon" aria-hidden="true"></i>
+    </span>
+</li>
+{{/each}}
+</ul>

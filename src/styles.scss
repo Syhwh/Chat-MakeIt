@@ -2,65 +2,108 @@
 Si la pantalla es más grande que eso van a centrarlo. 
 El tamaño vertical debe ser siempre de 750px (bonus: mirar si se puede adaptar al alto de la pantalla).
 */
-
+* {
+    box-sizing: border-box;
+  }
 body{
     font-family: 'lato','sans';
-    font-size: 16px;
+    font-size: 15px;
     padding: none;
     border: none;
     margin: none;
-    box-sizing: border-box;
+   
     list-style:none;
 }
 .container{
-    display: flex;
-    box-sizing: border-box;
+    display: flex;   
     padding: none;
-    border: none;
-    margin: none; 
+    border: 2px solid black;
+    margin: none;     
     max-width: 1000px;
-     height: 750px;
-     border: 1px solid red;
-     background-color: red;
+     height: 750px;   
      margin: 0 auto;
     
 }
 .users-wrapper{
     width: 270px;
-    height: 750px;
+    height: 100%;
     background-color: #343a40;
     color: gray;
-    box-sizing: border-box;
     
 }
 
 .main{
+    position: relative;
     background-color: #fff;
     width: 730px;
-    height: 750px;
-    margin-left: 10px;
+    height: 100%;   
+   
 }
 .chat-header{
+    position: relative;   
     display: flex;
     flex-direction:  row-reverse;
     background-color: #aaa;
     height: 5%;
 }
 .messages{
-    height: 90%;
+    position: relative;   
+    height: 90%;   
+    background-color: #fff;
 }
 .input-messages{
+    position: relative;
+    bottom: 0;
     background-color: green;
     width: 100%;
     height: 5%;
 }
 
+
 .user{
-    padding: 5px 2px;
+    display: flex;    
+    padding: 5px 5px;
     color: #fff;
     cursor:pointer;
 }
 
 .user:hover{
     background-color: #007bff;
+}
+
+.user-icon{
+    padding-right: 10px; 
+}
+
+.connected-true .user-icon {
+    color: rgb(77, 218, 77);
+
+}
+
+.dots-icon{
+    display: flex;
+    justify-content: flex-end;
+}
+.chat-name{
+    margin-top: 0;
+    padding-right: 15px;
+    color: #6e6e6e;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.name-date-message{
+    display: flex;
+    padding-top: 10px;
+    
+    align-content: center
+}
+.chat-date{
+    color: #6e6e6e;   
+    font-size: 0.8rem;
+}
+.message{
+    padding: 5px 0;
+}
+.chat-display{
+    padding-left: 15px;
 }
