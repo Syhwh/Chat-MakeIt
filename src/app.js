@@ -1,38 +1,48 @@
 import styles from './styles.scss';
 import $ from 'jquery';
-import {fetchData} from './scripts/fetchdata';
-import {fetchChat} from './scripts/fetchdata';
+import { date } from './scripts/timeAndDate';
 
-const usersList =require('./templates/usersList.hbs')
-const chatDisplat=require('./templates/chatDisplay.hbs')
+const aside =require('./templates/partials/aside.partial.hbs');
+const chatMessages =require('./templates/partials/chatMessages.partial.hbs')
+const chatGeneral= require('./templates/partials/chatGeneral.hbs')
 
+const ws = new WebSocket("wss://mir-chat.herokuapp.com");
 
-const data =()=>{
-    fetchData()
-    .then(element=>displayUsers(element) )
+ws.onopen = function () {
+   console.log("Conectados!");
 }
 
-const displayUsers=(data)=>{    
-   $('#userList').html(usersList({data}))   
+ws.onmessage = function (msg) {
+   var obj = JSON.parse(msg.data);
+   displayChat(obj)
+   
 }
 
-$('#userList').on('click','li', (e)=> {
-   // alert('it works')
-    const id=$(e.currentTarget).attr('id')
-    
-    fetchData()
-    .then(element=> element )
-    .then( data=>{ 
-       const object =  data.find( (obj) =>{ return obj.name == id})      
-        fetchChat(object.url)
-        .then(chats=> printChats(chats))
-        })
+ws.onclose = function () {
+   console.log("Desconectados!");
+}
+
+$('#chat').on('keypress','input', ((e) => {
+   const message = $("#send").val()
+   if (e.which == 13) {
+      console.log(message)
+     ws.send(JSON.stringify({ sender: "SWG", message }))
+      $("input:text").val('')
+      scrollUpdate()
+   }
+
 })
+)
 
-const printChats=(data)=>{
-$('#chat-messages').html(chatDisplat({data}))
+const displayChat = (data) => {
+   console.log({ data })
+   $('#chat-history').append(chatMessages(data))
+ 
+}
+const scrollUpdate =()=>{
+   $('#chat-history').scrollTop($('#chat-history')[0].scrollHeight);
 }
 
-
-
-data()
+//layout
+$('aside').html(aside)
+$('.chat').html(chatGeneral)

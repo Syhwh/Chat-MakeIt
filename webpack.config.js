@@ -23,7 +23,10 @@ module.exports={
             },
             {
                 test: /\.hbs$/, 
-                loader: "handlebars-loader" 
+                loader: "handlebars-loader" ,
+                options:{
+                    partialDirs: path.join(__dirname ,'.src/templates/partials')
+                }
             }
         ]
     },
